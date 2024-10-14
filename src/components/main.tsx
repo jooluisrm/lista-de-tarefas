@@ -48,7 +48,7 @@ export const Main = () => {
 
             <div className="flex flex-col gap-3">
                 {!isLoading && listaTarefa.map((item, index) => (  // mostra todos os items adicionados
-                    <Tarefa item={item} key={index} />
+                    <Tarefa item={item} key={index} setListaTarefa={setListaTarefa}/>
                 ))}
             </div>
 
