@@ -4,7 +4,7 @@ type Props = {
     enter: (e: any) => void;
 }
 
-export const Input = ({ input, setInput, enter}: Props) => {
+export const Input = ({ input, setInput, enter }: Props) => {
     return (
         <div>
             <div className="flex items-center">
@@ -15,7 +15,8 @@ export const Input = ({ input, setInput, enter}: Props) => {
                     onKeyDown={enter}
                     className="outline-none my-5 min-w-full bg-[#17181F] border border-gray-500 py-2 px-10 rounded-2xl"
                     type="text"
-                    placeholder="Adicione uma tarefa"
+                    placeholder="Adicione uma tarefa..."
+                    autoFocus
                 />
             </div>
         </div>

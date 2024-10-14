@@ -28,14 +28,15 @@ export const Main = () => {
             setInput('');
             setInterval(() => {
                 setLoading(false);
-            }, 1800);
-            
-        }
+            }, 1000);
+
+        };
     }
 
     return (
         <div>
-            <Input input={input} setInput={setInput} enter={AddTarefa}/>
+
+            <Input input={input} setInput={setInput} enter={AddTarefa} />
             {listaTarefa.length === 0 &&
                 <h2 className="text-center text-gray-400 text-md">Adicione uma tarefa para começar !!!</h2>
             }
@@ -44,10 +45,15 @@ export const Main = () => {
             }
             <div className="flex flex-col gap-3">
                 {!isLoading && listaTarefa.map((item, index) => (
-                    <Tarefa item={item} key={index} listaTarefa={listaTarefa} setListaTarefa={setListaTarefa}/>
-                ))}  
+                    <Tarefa item={item} key={index} setListaTarefa={setListaTarefa} />
+                ))}
             </div>
-            
-        </div>
+            {!isLoading && listaTarefa.length > 0 &&
+                <div className="text-gray-400 text-md py-5 text-center">
+                    Total de Tarefas: <span className="font-bold">{listaTarefa.length}</span>
+                </div>
+            }
+
+        </div >
     );
 }
