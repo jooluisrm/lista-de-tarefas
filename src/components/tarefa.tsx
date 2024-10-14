@@ -7,7 +7,7 @@ type Props = {
 
 export const Tarefa = ({ item, setListaTarefa }: Props) => {
 
-    const handleCheckBox = () => {
+    const handleCheckBox = () => { 
         setListaTarefa((prevLista: TarefaType[]) =>
             prevLista.map((tarefa) =>
                 tarefa.msg === item.msg ? { ...tarefa, checkbox: !tarefa.checkbox } : tarefa
