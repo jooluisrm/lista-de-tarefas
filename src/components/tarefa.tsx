@@ -1,29 +1,24 @@
 import { TarefaType } from "@/types/TarefaType";
+import { useState } from "react";
 
 type Props = {
     item: TarefaType;
-    setListaTarefa: React.Dispatch<React.SetStateAction<TarefaType[]>>;
 }
 
-export const Tarefa = ({ item, setListaTarefa }: Props) => {
+export const Tarefa = ({ item }: Props) => {
 
-    const handleCheckBox = () => { 
-        setListaTarefa((prevLista: TarefaType[]) =>
-            prevLista.map((tarefa) =>
-                tarefa.msg === item.msg ? { ...tarefa, checkbox: !tarefa.checkbox } : tarefa
-            )
-        );
-    };
+    const [isChecked, setIsChecked] = useState(item.checkbox);
+
 
     return (
         <div className="bg-[#20212C] flex items-center gap-2 p-3 rounded-2xl">
             <input
-                onClick={handleCheckBox}
+                onChange={e => setIsChecked(e.target.checked)}
                 className="size-8"
                 type="checkbox"
-                checked={item.checkbox}
+                checked={isChecked}
             />
-            <p className={`${item.checkbox && `line-through font-bold`}`}>{item.msg}</p>
+            <p className={`${isChecked && `line-through font-bold`}`}>{item.msg}</p>
         </div>
     );
 }
