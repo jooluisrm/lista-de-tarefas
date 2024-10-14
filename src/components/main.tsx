@@ -5,8 +5,9 @@ export const Main = () => {
     return (
         <div>
             <Input />
-            <div>
+            <div className="flex flex-col gap-3">
                 <Tarefa />
+                
             </div>
             
         </div>
