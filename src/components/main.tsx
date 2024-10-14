@@ -21,10 +21,11 @@ export const Main = () => {
         if (event.key.toLocaleLowerCase() === 'enter') {
             setLoading(true);
             setListaTarefa([...listaTarefa, {
+                id: listaTarefa.length +1,
                 msg: input,
                 checkbox: false
             }]);
-
+            console.log(listaTarefa)
             setInput('');
             setInterval(() => {
                 setLoading(false);
