@@ -16,9 +16,15 @@ export const Main = () => {
 
     const AddTarefa = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (!VerificarInput(input)) return
-        
+
         if (event.key.toLocaleLowerCase() === 'enter') {
-            alert('Apertou');
+            
+            setListaTarefa([...listaTarefa, {
+                msg: input,
+                checkbox: false
+            }]);
+            setInput('');
+            alert("Tarefa adicionada!")
         }
     }
 
@@ -26,11 +32,9 @@ export const Main = () => {
         <div>
             <Input input={input} setInput={setInput} enter={AddTarefa}/>
             <div className="flex flex-col gap-3">
-                {listaTarefa.map((item) => (
-                    <Tarefa />
-                ))}
-                <Tarefa />
-                
+                {listaTarefa.map((item, index) => (
+                    <Tarefa item={item} key={index} listaTarefa={listaTarefa} setListaTarefa={setListaTarefa}/>
+                ))}  
             </div>
             
         </div>
