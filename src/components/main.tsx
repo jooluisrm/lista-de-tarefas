@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "./input";
 import { Tarefa } from "./tarefa";
 import { TarefaType } from "@/types/TarefaType";
@@ -10,6 +10,7 @@ export const Main = () => {
     const [input, setInput] = useState('');
     const [listaTarefa, setListaTarefa] = useState<TarefaType[]>([]);
     const [isLoading, setLoading] = useState(false);
+    const [taskConcluida, setTaskConcluida] = useState<TarefaType[]>([]);
 
     const VerificarInput = (input: string) => { // verifica se o input esta vazio
         if (input.trim() !== '') return true;
@@ -21,7 +22,7 @@ export const Main = () => {
         if (event.key.toLocaleLowerCase() === 'enter') {
             setLoading(true);
             setListaTarefa([...listaTarefa, {
-                id: listaTarefa.length +1,
+                id: listaTarefa.length + 1,
                 msg: input,
                 checkbox: false
             }]);
@@ -33,6 +34,17 @@ export const Main = () => {
 
         };
     }
+
+    useEffect(() => {
+        const taskConcluidas = () => {
+            const concluidas = listaTarefa.filter(item => item.checkbox === true);
+            console.log(concluidas);
+            setTaskConcluida(concluidas);
+        }
+        taskConcluidas();
+
+    }, [listaTarefa]);
+
 
     return (
         <div className="lg:max-w-[1000px] mx-auto">
@@ -48,13 +60,14 @@ export const Main = () => {
 
             <div className="flex flex-col gap-3">
                 {!isLoading && listaTarefa.map((item, index) => (  // mostra todos os items adicionados
-                    <Tarefa item={item} key={index} listaTarefa={listaTarefa} setListaTarefa={setListaTarefa}/>
+                    <Tarefa item={item} key={index} listaTarefa={listaTarefa} setListaTarefa={setListaTarefa} />
                 ))}
             </div>
 
             {!isLoading && listaTarefa.length > 0 && // exibir total de tarefas
                 <div className="text-gray-400 text-md py-5 text-center">
-                    Total de Tarefas: <span className="font-bold">{listaTarefa.length}</span>
+                    Total de Tarefas: <span className="font-bold">{listaTarefa.length}</span> <br />
+                    Total de Tarefas Concluidas: <span className="font-bold">{taskConcluida.length}</span>
                 </div>
             }
 
