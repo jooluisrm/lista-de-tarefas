@@ -49,7 +49,7 @@ export const Tarefa = ({ item, listaTarefa, setListaTarefa }: Props) => {
         if (id) {
             const tarefaEditada = listaTarefa.find(item => item.id === id);
             let newText = prompt("Digite o novo texto:",tarefaEditada?.msg);
-            if(newText?.trim() !== '' && tarefaEditada) {
+            if(newText?.trim() !== '' && tarefaEditada && newText !== null) {
                 const newList = listaTarefa.map(item => item.id === id ? {...item, msg: newText} : item);
                 setListaTarefa(newList);
             } else {
