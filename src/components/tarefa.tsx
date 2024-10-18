@@ -61,7 +61,7 @@ export const Tarefa = ({ item, listaTarefa, setListaTarefa }: Props) => {
 
 
     return (
-        <div className="bg-[#20212C] flex justify-between items-center gap-2 py-3 px-5 rounded-2xl">
+        <div style={{ opacity: item.checkbox ? 0.7 : 1 }}  className="bg-[#20212C] flex justify-between items-center gap-2 py-3 px-5 rounded-2xl transition-all">
             <div className="flex items-center gap-5">
                 <input
                     onClick={handleCheckBox}
@@ -75,7 +75,7 @@ export const Tarefa = ({ item, listaTarefa, setListaTarefa }: Props) => {
 
             <div onClick={mostrarOptions} className="text-2xl font-bold flex flex-col gap-2 items-center justify-center cursor-pointer h-3">
 
-                <div className="flex gap-1 items-center">
+                <div className="flex gap-1 items-center hover:opacity-50">
                     <div className="w-1 h-1 rounded-full bg-white"></div>
                     <div className="w-1 h-1 rounded-full bg-white"></div>
                     <div className="w-1 h-1 rounded-full bg-white"></div>

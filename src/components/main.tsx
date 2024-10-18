@@ -17,7 +17,7 @@ export const Main = () => {
     }
 
     const AddTarefa = (event: React.KeyboardEvent<HTMLInputElement>) => { // Adiciona nova tarefa
-        if (!VerificarInput(input)) return;
+        if (!VerificarInput(input)) return alert("Adicione um texto para continuar!");
 
         if (event.key.toLocaleLowerCase() === 'enter') {
             setLoading(true);
