@@ -35,7 +35,7 @@ export const Main = () => {
     }
 
     return (
-        <div>
+        <div className="lg:max-w-[1000px] mx-auto">
             <Input input={input} setInput={setInput} enter={AddTarefa} />
 
             {listaTarefa.length === 0 && // exibir msg inicial
@@ -48,7 +48,7 @@ export const Main = () => {
 
             <div className="flex flex-col gap-3">
                 {!isLoading && listaTarefa.map((item, index) => (  // mostra todos os items adicionados
-                    <Tarefa item={item} key={index} setListaTarefa={setListaTarefa}/>
+                    <Tarefa item={item} key={index} listaTarefa={listaTarefa} setListaTarefa={setListaTarefa}/>
                 ))}
             </div>
 
